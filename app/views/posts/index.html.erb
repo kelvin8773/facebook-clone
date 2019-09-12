@@ -4,7 +4,9 @@
     <h4> Hi <%= current_user.name%> </h4>
     <%= image_tag current_user.gravatar_url %>
     <%= link_to 'Create Post', new_posts_path %>
-    <%=  render 'posts/post'%>
+    <ul>
+        <%= render @posts %>
+    </ul>
 <%else %>
     <%= link_to 'Sign In', user_session_path%><br>
     <%= link_to 'Sign Up', new_user_registration_path%>

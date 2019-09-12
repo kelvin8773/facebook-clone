@@ -1,4 +1,4 @@
-<% @posts.each do |post|%>
-    post.content 
-    <h5> created by <%= post_creator(post)%> </h5> <br>
-<%end %>
+<li>
+    <%= post.content %> 
+    <h5> created by <%= post_creator(post) %> </h5> <br>
+</li>

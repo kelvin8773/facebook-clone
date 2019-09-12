@@ -8,14 +8,14 @@ class PostsController < ApplicationController
     if @post.save 
       flash[:notice] = 'Post created'
       redirect_to root_path
-    else 
+    else
       render 'new'
     end
 
   end
 
   def index
-    @posts = current_user.posts
+    @posts = Post.all
   end
 
   private
