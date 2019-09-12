@@ -1,14 +1,23 @@
-<h1> welcome to the facebook posts </h1>
-<% if user_signed_in?%>
-    <%= link_to 'sign_out', destroy_user_session_path, method: :delete %>
-    <h4> Hi <%= current_user.name%> </h4>
-    <%= image_tag current_user.gravatar_url %>
-    <%= link_to 'Create Post', new_posts_path %>
-    <ul>
-        <%= render @posts %>
-    </ul>
-<%else %>
-    <%= link_to 'Sign In', user_session_path%><br>
-    <%= link_to 'Sign Up', new_user_registration_path%>
-<% end%>
+<div class="row">
+
+<% if user_signed_in? %>
+    
+   <div class="col-md-4"> 
+        <%= image_tag current_user.gravatar_url %>
+        <h1> Welcome, <%= current_user.first_name %>!</h1>
+    </div>
+
+    <div class="col-md-8">
+        <%= link_to 'Create Post', new_posts_path, class: "btn btn-primary btn-block" %>
+        <ul>
+         <%= render @posts %>
+        </ul>
+    </div>
+
+<% else %>
+
+    <h1> Please <%= link_to "Sign In", new_user_session_path %> !</h1>
+<% end %>
+
+</div>
 

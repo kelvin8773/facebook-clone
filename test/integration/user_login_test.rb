@@ -6,11 +6,9 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     @user = users(:michael)
   end
 
-  test "see logout link after login" do
-    get new_user_session_path
-    sign_in users(:michael)
-    # assert_template 'post/index'
+  test "Have to login in root page" do
     get root_url
-    assert_select 'a[href=?]', destroy_user_session_path
+    assert_select 'a[href=?]', new_user_session_path, count: 2
+    assert_select 'a[href=?]', new_user_registration_path, count: 1
   end
 end
