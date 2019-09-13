@@ -1,0 +1,14 @@
+<%= form_for(@post) do |x| %>
+  <div class="field">     
+		<%= x.label :content %><br />
+    <%= x.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= x.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+	<div class="actions">
+    <%= x.submit "Post" %>
+  </div>
+<%end %>
