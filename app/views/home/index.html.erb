@@ -1,7 +1,7 @@
-<div class="row">
+
 
 <% if user_signed_in? %>
-    
+<div class="row">
    <div class="col-md-4"> 
         <%= image_tag current_user.gravatar_url %>
         <h1> Welcome, <%= current_user.first_name %>!</h1>
@@ -14,9 +14,8 @@
         </ul>
     </div>
 
-<% else %>
-
-    <h1> Please <%= link_to "Sign In", new_user_session_path %> !</h1>
-<% end %>
-
 </div>
+
+<% else %>
+    <%= render 'partials/new_user'%>
+<% end %>

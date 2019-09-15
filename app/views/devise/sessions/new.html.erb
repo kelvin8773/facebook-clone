@@ -1,5 +1,5 @@
 
-<div class="text-center big-div">
+<div class="text-center ">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|%>
       
       <div class="form-signin">
@@ -24,6 +24,8 @@
           <div class="checkbox mb-3">
             <%= f.submit "Sign in", class: "btn btn-lg btn-primary btn-block"%>
           </div>
+          <p class="text-center"> OR </p>
+          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary btn-block signup_button"%>
           <p class="mt-5 mb-3 text-muted">&copy; Bright, Kelvin</p>
         </div>
     <% end %>
