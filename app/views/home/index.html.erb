@@ -7,11 +7,16 @@
         <h1> Welcome, <%= current_user.first_name %>!</h1>
     </div>
 
-    <div class="col-md-8">
-        <%= render 'posts/form' %><br>
+    <div class="col-md-5">
+        <%= render 'posts/form' %>
+        <div class="clearfix">
+        </div>
         <ul>
          <%= render @posts %>
         </ul>
+    </div>
+    <div class="col-md-3">
+         
     </div>
 
 </div>

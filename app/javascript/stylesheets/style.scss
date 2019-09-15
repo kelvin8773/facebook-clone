@@ -12,3 +12,21 @@ body {
 .form-signin .mail {
     margin-bottom: 10px;
 }
+
+.post_box {
+    min-width: 100%;
+    min-height: 100px;
+}
+
+.post_button {
+    float: right;
+    margin-bottom: 30px;
+}
+
+.each_post {
+    background: #fff;
+    margin-bottom: 15px;
+    padding: 15px;
+    list-style: none;
+    width: 100%;
+}
