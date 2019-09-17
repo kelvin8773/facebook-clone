@@ -1,6 +1,18 @@
 <div class="each_post">
     <li>
         <%= post.content %><br> 
-        <h6> created by <%= post_creator(post) %> <h6> 
+        <div class="text-right">
+            <span class="mr-3 text-capitalize text-weight-bold"> <%= post.creator.first_name %> <span> 
+            <span> Created <%= time_ago_in_words(post.created_at) %> ago. </span>
+        </div>
+
+        <div class="mx-auto">
+        <%= link_to "Update", edit_posts_path(post), class: "btn btn-info" %>
+        <%= link_to "Delete", delete_post_path(post), 
+                                method: :delete,
+                                data: { confirm: "You sure?" },
+                                class: "btn btn-danger" %>
+        </div>                        
+    
     </li>
 </div>
