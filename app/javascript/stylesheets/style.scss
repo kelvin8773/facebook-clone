@@ -25,10 +25,12 @@ body {
 
 .each_post {
     background: #fff;
-    margin-bottom: 15px;
-    padding: 15px;
+    margin-bottom: 18px;
+    padding: 25px 20px;
     list-style: none;
     width: 100%;
+    box-shadow: 3px 3px 5px 6px #ccc;
+    border-radius: 10px;
 }
 
 .user_idex1 {
@@ -42,4 +44,27 @@ body {
 .user_idex1:hover {
     box-shadow: 3px 3px 5px 6px #ccc;
     cursor: pointer;
+}
+
+.created-date {
+    font-size: 10px;
+    color: black;
+    display: block;
+}
+
+.user-posts img {
+    border-radius: 50%;
+    max-height: 45px;
+    float: left;
+    margin-right: 10px;
+}
+
+.post_content {
+    margin: 15px 0;
+}
+
+.name1 {
+    font-size: 15px;
+    font-weight: bold;
+    color: rgb(0, 113, 186);
 }

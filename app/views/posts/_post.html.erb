@@ -1,10 +1,16 @@
 <div class="each_post">
     <li>
-        <%= post.content %><br> 
-        <div class="text-right">
-            <span class="mr-3 text-capitalize text-weight-bold"> <%= post.creator.first_name %> <span> 
-            <span> Created <%= time_ago_in_words(post.created_at) %> ago. </span>
+        <div class="user-posts">
+           <%= image_tag post.creator.gravatar_url %> <span class="mr-3  name1"> 
+           <%= post.creator.name.capitalize %> <span> 
+            <span class="created-date"> Created <%= time_ago_in_words(post.created_at) %> ago. </span>
         </div>
+        <div class="clearfix mb-1">
+        </div>
+        <div class="post_content">
+            <%= post.content %><br> 
+        </div>
+        
 
         <div class="mx-auto">
         <%= link_to "Update", edit_posts_path(post), class: "btn btn-info" %>
