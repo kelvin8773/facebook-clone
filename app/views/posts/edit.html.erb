@@ -1,20 +1,24 @@
-<h1> Edit Post </h1>
-
-<div class="container">
-
-  <%= form_for(@post, url: posts_path(@post)) do |x| %>
-    <div class="field">     
-      <%= x.label :content %><br />
-      <%= x.text_area :content, class: "post_box" %>
+<% if user_signed_in? %>
+<div class="row">
+   <div class="col-md-4"> 
+        <%= image_tag current_user.gravatar_url %>
+        <h1> Welcome, <%= current_user.first_name %>!</h1>
     </div>
 
-    <div class="field">
-      <%= x.hidden_field :user_id, value: current_user.id %>
+    <div class="col-md-5">
+        <%= render 'posts/editform' %>
+        <div class="clearfix">
+        </div>
+        <ul>
+         <%= render @posts %>
+        </ul>
     </div>
-
-    <div class="actions">
-      <%= x.submit "Post", class: "btn btn-primary post_button"  %>
+    <div class="col-md-3">
+         
     </div>
-  <%end %>
 
 </div>
+
+<% else %>
+    <%= render 'partials/new_user'%>
+<% end %>
