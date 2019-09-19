@@ -4,14 +4,14 @@
       
       <div class="form-signin">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-          <div >
-            <%= f.label :email, class: "sr-only" %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control mail"%>
+          <div mail >
+            <%= f.label :mail1, class: "sr-only" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control mail",  id: "mail2"%>
           </div> 
 
-          <div >
-            <%= f.label :password, class: "sr-only" %>
-            <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: "form-control pass" %>
+          <div pass>
+            <%= f.label :pass1, class: "sr-only" %>
+            <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: "form-control pass", id: "pass2"  %>
           </div>
 
           <% if devise_mapping.rememberable? %>

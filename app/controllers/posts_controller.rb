@@ -4,6 +4,8 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @posts = Post.all
+
   end
 
   def create
@@ -12,6 +14,7 @@ class PostsController < ApplicationController
       flash[:success] = 'Post created'
       redirect_to root_path
     else
+      flash[:danger] = 'content cant be empty or less than 10 letter'
       render 'new'
     end
 
