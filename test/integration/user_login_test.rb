@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
@@ -6,8 +8,8 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     @user = users(:michael)
   end
 
-  test "Have to login in root page" do
+  test 'Have to login in root page' do
     get root_url
-    assert_select 'a[href=?]', new_user_session_path, count: 1   
+    assert_select 'a[href=?]', new_user_session_path, count: 1
   end
 end

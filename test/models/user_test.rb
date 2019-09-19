@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
     @user = users(:michael)
   end
-  
+
   test 'should be valid' do
     assert @user.valid?
   end
@@ -30,10 +32,8 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 'Michael', @user.first_name
     assert_equal 'smith', @user.last_name
 
-    @user.name = "Kelvin"
+    @user.name = 'Kelvin'
     assert_equal 'Kelvin', @user.first_name
     assert_equal 'Kelvin', @user.last_name
-
   end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class PostTest < ActiveSupport::TestCase
@@ -21,16 +23,10 @@ class PostTest < ActiveSupport::TestCase
   end
 
   test "Post content can't be too short or too long" do
-    @post.content = "x" * 9
+    @post.content = 'x' * 9
     assert_not @post.valid?
 
-    @post.content = "x" * 301
+    @post.content = 'x' * 301
     assert_not @post.valid?
   end
-
-
-
-
-
-  
 end
