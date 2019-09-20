@@ -7,11 +7,17 @@
         </div>
         <div class="clearfix mb-1">
         </div>
+
         <div class="post_content">
             <%= post.content %><br> 
         </div>
-        
 
+        <hr>
+            <%= render 'comments/form', post: post %>
+            <%= render post.comments %>
+        
+        <hr>
+        
         <div class="mx-auto">
         <%= link_to "Update", edit_posts_path(post), class: "btn btn-info" %>
         <%= link_to "Delete", delete_post_path(post), 
