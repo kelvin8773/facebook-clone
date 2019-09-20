@@ -1,0 +1,27 @@
+
+
+<% if user_signed_in? %>
+    <div class="row">
+        <div class="col-md-4"> 
+            <%= image_tag current_user.gravatar_url %>
+            <h1> Welcome, <%= current_user.first_name %>!</h1>
+        </div>
+
+        <div class="col-md-4 milddle">
+            <%= render 'posts/form' %>
+            <ul>
+            <%= render @posts %>
+            </ul>
+        </div>
+        <div class="col-md-4">
+         
+        </div>
+    </div>
+
+<% else %>
+
+    <h1> Please <%= link_to "Sign In", new_user_session_path %> !</h1>
+<% end %>
+
+
+
