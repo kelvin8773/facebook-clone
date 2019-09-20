@@ -1,11 +1,13 @@
 <%= form_for(@comment, url: comments_create_path ) do |f| %>
-  <div class="field">     
-    <%= f.text_area :content, class: "post_box", id: "content"%>
+  <div class="field comments2">     
+    <%= f.text_area :content, class: "post_box", id: "content", class: "comment-box", placeholder: "add comment"%>
   </div>
 
 	<div class="actions">
     <%= f.hidden_field :post_id, value: post.id %>
 
-    <%= f.submit "Comment", class: "btn btn-primary post_button"  %>
+    <%= f.submit "Add comment", class: "btn btn-primary comment_button"  %>
+  </div>
+  <div class="clearfix">
   </div>
 <%end %>

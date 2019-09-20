@@ -1,1 +1,11 @@
-<p> <%= comment.content %> </p>
+<div class="comments1">
+    <div class="row comments-header">
+        <div class="col-md-2 mr-0">
+            <%= image_tag comment.user.gravatar_url %>
+        </div>
+        <div class="col-md-10 ml-0 comment-user">
+            <span> <%= link_to comment.user.name, class: 'comment-user'%>
+            <%= comment.content %> </span>
+        </div>
+    </div>
+</div>
