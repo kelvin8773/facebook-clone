@@ -16,7 +16,7 @@ class User < ApplicationRecord
   end
 
   def last_name
-    n = name.split(' ')[1..n.length].join(' ')
+    name.split(' ').last
   end
-end
 
+end
