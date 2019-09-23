@@ -1,0 +1,13 @@
+<%= form_for(@comment, url: comments_path(@comment)) do |f| %>
+  <div class="field comments2">     
+    <%= f.text_area :content, class: "post_box", id: "content", class: "comment-box px-2 py-2", placeholder: "add comment"%>
+  </div>
+
+	<div class="actions">
+    <%= f.hidden_field :comment_id, value: @comment.id %>
+
+    <%= f.submit "edit", class: "btn btn-primary comment_button"  %>
+  </div>
+  <div class="clearfix">
+  </div>
+<%end %>

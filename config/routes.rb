@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'comments/show'
   get 'comments/edit'
   post 'comments/update'
+  delete "/delete_comment", to: "comments#destroy"
 
   get 'users/index'
   get 'home' => 'home#index'
@@ -15,5 +16,6 @@ Rails.application.routes.draw do
   delete "/delete_post", to: "posts#destroy"
 
   resource :posts
+  resource :comments
   resources :users, only: [:index]
 end

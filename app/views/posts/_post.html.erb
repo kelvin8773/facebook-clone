@@ -14,7 +14,13 @@
 
         <hr>
             <%= render post.comments %>
-            <%= render 'comments/form', post: post %>
+            <% if params[:controller] == 'comments' && params[:action] == 'edit' %>
+                <% if current_user.id == @comment.user_id%>
+                    <%= render 'comments/editform', post: post %>
+                <%end%>
+            <% else %>
+                 <%= render 'comments/form', post: post %>
+            <% end %>
         <hr>
         
         <div class="mx-auto">

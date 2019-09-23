@@ -1,4 +1,4 @@
-<%= form_for(@post) do |x| %>
+<%= form_for(@post, url: posts_path(@post)) do |x| %>
   <div class="field">     
 		<%= x.label :content %><br />
     <%= x.text_area :content, class: "post_box", id: "content"%>

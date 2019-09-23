@@ -20,9 +20,28 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @comment = Comment.find_by(id: params[:format])
+    @post = Post.find_by(id: params[:format])
+    @posts = Post.all
   end
 
   def update
+    @comment = Comment.find_by(id: params[:format])
+    @post = Post.find_by(id: params[:format])
+    @posts = Post.all
+    @comments = Comment.all
+    if @comment.update(comment_params)
+      flash[:success] = 'Comment updated!'
+      redirect_to root_path
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @comment = Comment.find_by(id: params[:format])
+    flash[:danger] = 'Comment Deleted!' if @comment.destroy
+    redirect_to root_path
   end
 
   private
