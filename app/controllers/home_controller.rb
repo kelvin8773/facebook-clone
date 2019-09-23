@@ -3,7 +3,8 @@
 class HomeController < ApplicationController
   def index
     @post = Post.new
-    @posts = Post.all
+    @like = Like.new
     @comment = Comment.new
+    @posts = Post.all
   end
 end

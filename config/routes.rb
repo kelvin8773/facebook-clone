@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   root to: 'home#index'
-
-
   
   post 'comments/create'
   get 'comments/show'
@@ -17,5 +15,6 @@ Rails.application.routes.draw do
 
   resource :posts
   resource :comments
+  resource :likes
   resources :users, only: [:index]
 end

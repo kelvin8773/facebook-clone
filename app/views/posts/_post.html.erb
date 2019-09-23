@@ -10,6 +10,8 @@
 
         <div class="post_content">
             <%= post.content %><br> 
+            <%= link_to "Like", likes_path, method: :post %>
+            <span class="mx-1"> <%= post.likes.count %> </span>
         </div>
 
         <hr>
@@ -22,7 +24,7 @@
                  <%= render 'comments/form', post: post %>
             <% end %>
         <hr>
-        
+
         <div class="mx-auto">
         <%= link_to "Update", edit_posts_path(post), class: "btn btn-info" %>
         <%= link_to "Delete", delete_post_path(post), 
