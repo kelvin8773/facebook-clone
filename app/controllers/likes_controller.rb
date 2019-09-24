@@ -10,7 +10,18 @@ class LikesController < ApplicationController
     end
     redirect_to root_path
   end
-  
+
+  def destroy
+    @like = Like.find_by(id: params[:format])
+
+    if @like.destroy
+      flash[:success] = "You Unliked!"
+    else
+      flash[:danger] = "You can't unlike."
+    end
+    redirect_to root_url
+  end
+
 
   private
   def like_params

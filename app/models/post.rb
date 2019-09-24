@@ -11,4 +11,8 @@ class Post < ApplicationRecord
   def creator
     User.find_by(id: user_id)
   end
+
+  def liked?(user)
+    likes.find_by(user_id: user.id)
+  end
 end

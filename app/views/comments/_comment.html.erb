@@ -7,7 +7,9 @@
             <span> <%= link_to comment.user.name, class: 'comment-user'%>
             <%= comment.content %> </span><br>
             <div>
-                <%= link_to image_tag("like.png", :alt => "like button"), class: 'like-image'  %>
+                <%# <%= link_to image_tag("like.png", :alt => "like button"), class: 'like-image'  %> 
+                <%= render 'likes/comment_form', comment: comment %>
+
                 <div class="text-right">
                     <%= link_to "Edit", edit_comments_path(comment), class: "btn btn-info" %>
                     <%= link_to "Delete", delete_comment_path(comment), 

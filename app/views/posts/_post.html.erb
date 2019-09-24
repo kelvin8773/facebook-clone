@@ -10,8 +10,10 @@
 
         <div class="post_content">
             <%= post.content %><br> 
-            <%= link_to "Like", likes_path, method: :post %>
-            <span class="mx-1"> <%= post.likes.count %> </span>
+            
+            <%= render 'likes/post_form', post: post %>
+
+             <span class="mx-1"> <%= post.likes.count %> </span>
         </div>
 
         <hr>
