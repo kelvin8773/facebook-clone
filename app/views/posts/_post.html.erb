@@ -9,31 +9,24 @@
         </div>
 
         <div class="post_content">
-            <%= post.content %><br> 
-            
+            <%= post.content %><br>    
             <%= render 'likes/post_form', post: post %>
-
-             <span class="mx-1"> <%= post.likes.count %> </span>
         </div>
 
         <hr>
             <%= render post.comments %>
-            <% if params[:controller] == 'comments' && params[:action] == 'edit' %>
-                <% if current_user.id == @comment.user_id%>
-                    <%= render 'comments/editform', post: post %>
-                <%end%>
-            <% else %>
-                 <%= render 'comments/form', post: post %>
-            <% end %>
+            <%= render 'comments/form', post: post %>
+           
         <hr>
-
-        <div class="mx-auto">
-        <%= link_to "Update", edit_posts_path(post), class: "btn btn-info" %>
-        <%= link_to "Delete", delete_post_path(post), 
+        <div class="mx-auto float-right">
+            <%= link_to "Update", edit_posts_path(post), class: "btn btn-info edit-post" %>
+            <%= link_to "Delete", delete_post_path(post), 
                                 method: :delete,
                                 data: { confirm: "You sure?" },
-                                class: "btn btn-danger" %>
-        </div>                        
+                                class: "btn btn-danger delete-post ml-2" %>
+        </div>     
+        <div class="clearfix">
+        </div>                   
     
     </li>
 </div>

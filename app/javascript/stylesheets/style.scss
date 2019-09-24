@@ -137,3 +137,19 @@ body {
     font-size: 18px;
     min-height: 100px;
 }
+
+.post-like {
+    border: none;
+    color: darkblue;
+    background: none;
+    padding: 0;
+    font-size: 16px;
+}
+
+.delete-post,
+.edit-post {
+    font-size: 12px;
+    padding: 2px;
+}
+
+.edit-post {}
