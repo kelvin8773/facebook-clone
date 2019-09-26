@@ -1,10 +1,12 @@
 <div class="comments1">
     <div class="row comments-header">
         <div class="col-md-2 mr-0">
-            <%= image_tag comment.user.gravatar_url %>
+            <%= link_to image_tag(comment.user.gravatar_url), 
+                users_show_path(comment.user) %>
         </div>
         <div class="col-md-10 ml-0 comment-user">
-            <span> <%= link_to comment.user.name, class: 'comment-user'%>
+            <span> <%= link_to comment.user.name, users_show_path(comment.user),
+                        class: 'comment-user mr-1'%>
             <%= comment.content %> </span><br>
             <div class="mt-2">
                 <div class="float-left">
