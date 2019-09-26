@@ -9,24 +9,28 @@
         </div>
 
         <div class="post_content">
-            <%= post.content %><br>    
+            <%= post.content %><br> 
+
+        <div class="d-flex justify-content-between">
             <%= render 'likes/post_form', post: post %>
+
+            <% if post.user == current_user %>
+                <div class="mr-4">
+                    <%= link_to "Update", edit_posts_path(post), class: "btn btn-info edit-post" %>
+                    <%= link_to "Delete", delete_post_path(post), 
+                                        method: :delete,
+                                        data: { confirm: "You sure?" },
+                                        class: "btn btn-danger delete-post ml-2" %>
+                </div>  
+            <% end %>
         </div>
+
+        </div>
+
 
         <hr>
             <%= render post.comments %>
             <%= render 'comments/form', post: post %>
            
-        <hr>
-        <div class="mx-auto float-right">
-            <%= link_to "Update", edit_posts_path(post), class: "btn btn-info edit-post" %>
-            <%= link_to "Delete", delete_post_path(post), 
-                                method: :delete,
-                                data: { confirm: "You sure?" },
-                                class: "btn btn-danger delete-post ml-2" %>
-        </div>     
-        <div class="clearfix">
-        </div>                   
-    
     </li>
 </div>

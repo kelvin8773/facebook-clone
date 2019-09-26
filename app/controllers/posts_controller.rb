@@ -25,6 +25,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find_by(id: params[:format])
+    @like = Like.new
     @posts = Post.all
     @comment = Comment.new
   end

@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
   end
 
@@ -12,11 +14,9 @@ class CommentsController < ApplicationController
       flash[:danger] = 'Comment can not be saved.'
       redirect_to root_path
     end
-
   end
 
-  def show
-    
+  def show   
   end
 
   def edit

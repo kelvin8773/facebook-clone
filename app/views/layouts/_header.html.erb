@@ -1,22 +1,20 @@
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #036ffc;">
   
-  <%= link_to 'Facebook-Clone', root_path, class: "navbar-brand"%>
+  <%= link_to 'Facebook-Clone', root_path, class: "navbar-brand font-italic font-weight-bold"%>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-        <%= link_to 'Home', root_path, class: " nav-link" %>
-      </li>
+      
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
           <a  class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Hi,  <%= current_user.first_name  %> </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <%= link_to "Your Profile", users_show_path(current_user), class: "dropdown-item" %>
+            <a class="dropdown-item" href="#">Friends</a>
             <div class="dropdown-divider"></div>
             <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
@@ -25,12 +23,9 @@
         <li class="nav-item">    
           <%= link_to 'All Users', users_index_path, class: "nav-link" %>
         </li>
-        <%# <li class="nav-item">    
-          <%= link_to 'Posts', posts_path, class: "nav-link" %>
-        <%# </li> %>
-
+    
       <% else %>  
-        <%= render 'partials/form'%>
+        <%= render 'partials/signin_form' %>
       <% end %>
 
     </ul>

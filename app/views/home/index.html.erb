@@ -1,16 +1,17 @@
-<% if user_signed_in? %>
 <div class="row">
-   <div class="col-md-3"> 
-        <%= image_tag current_user.gravatar_url %>
-        <h1> Welcome, <%= current_user.first_name %>!</h1>
+   <div class="col-md-3 text-center"> 
+        <%= image_tag current_user.gravatar_url, style: "width: 7rem;", class: "my-2" %>
+        <h4 class="font-italic font-weight-light"> <%= current_user.name %></h4>
     </div>
 
     <div class="col-md-6 posts1">
         <%= render 'posts/form' %>
         <div class="clearfix">
         </div>
+        
         <ul>
          <%= render @posts %>
+
         </ul>
     </div>
     <div class="col-md-3">
@@ -19,6 +20,3 @@
 
 </div>
 
-<% else %>
-    <%= render 'partials/new_user'%>
-<% end %>
