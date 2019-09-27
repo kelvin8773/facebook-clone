@@ -1,0 +1,30 @@
+<div class="comments1">
+    <div class="row comments-header">
+        <div class="col-md-2 mr-0">
+            <%= link_to image_tag(comment.user.gravatar_url), 
+                users_show_path(comment.user) %>
+        </div>
+        <div class="col-md-10 ml-0 comment-user">
+            <span> <%= link_to comment.user.name, users_show_path(comment.user),
+                        class: 'comment-user mr-1'%>
+            <%= comment.content %> </span><br>
+            <div class="mt-2">
+                <div class="float-left">
+                    <%= render 'likes/comment_form', comment: comment%>
+                </div>
+
+            <% if comment.user == current_user %>
+                <div class="float-right">
+                    <%= link_to "Edit", edit_comments_path(comment), class: "btn btn-info delete-post" %>
+                    <%= link_to "Delete", delete_comment_path(comment), 
+                                        method: :delete,
+                                        data: { confirm: "You sure?" },
+                                        class: "btn btn-danger delete-post" %>
+                </div>
+            <% end %>
+
+            </div>
+        </div>
+               
+    </div>
+</div>

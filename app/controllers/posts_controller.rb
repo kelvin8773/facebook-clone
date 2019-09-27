@@ -25,12 +25,15 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find_by(id: params[:format])
+    @like = Like.new
     @posts = Post.all
+    @comment = Comment.new
   end
 
   def update
     @post = Post.find_by(id: params[:format])
     @posts = Post.all
+    @comment = Comment.new
     if @post.update(post_params)
       flash[:success] = 'Post updated!'
       redirect_to root_path

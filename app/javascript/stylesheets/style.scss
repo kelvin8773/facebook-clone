@@ -16,6 +16,7 @@ body {
 .post_box {
     min-width: 100%;
     min-height: 100px;
+    overflow: hidden;
 }
 
 .post_button {
@@ -68,3 +69,87 @@ body {
     font-weight: bold;
     color: rgb(0, 113, 186);
 }
+
+.comment-box {
+    max-height: 30px;
+    width: 100%;
+}
+
+.posts1 ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.comments-header img {
+    border-radius: 50%;
+    max-height: 30px;
+    margin-right: 0;
+}
+
+.comments-header .comment-box {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.comment-user {
+    border-radius: 12px;
+    background-color: #f5f5f5;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.comment-box {
+    border-radius: 12px;
+    background-color: #f5f5f5;
+    border: none;
+    max-width: 100%;
+    min-height: 40px;
+}
+
+.comments1 {
+    margin: 0 35px;
+}
+
+.comments2 {
+    padding-left: 94px;
+    padding-right: 22px;
+}
+
+.comment_button {
+    margin-right: 23px;
+    font-size: 13px;
+    padding: 2px;
+    float: right;
+}
+
+.comment-user img {
+    height: 18px;
+    color: red;
+    margin-top: 5px;
+}
+
+.comment-box2 {
+    border-radius: 12px;
+    background-color: #fff;
+    border-radius: 12px;
+    border: none;
+    width: 100%;
+    font-size: 18px;
+    min-height: 100px;
+}
+
+.post-like {
+    border: none;
+    color: darkblue;
+    background: none;
+    padding: 0;
+    font-size: 16px;
+}
+
+.delete-post,
+.edit-post {
+    font-size: 12px;
+    padding: 2px;
+}
+
+.edit-post {}

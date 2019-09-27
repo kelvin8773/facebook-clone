@@ -15,41 +15,40 @@ RSpec.describe 'Post authentication', type: :feature do
 
   it 'unsuccessful post creation' do
     visit '/login'
-    page.fill_in 'mail2', with: 'brightokike5@gmail.com'
-    page.fill_in 'pass2', with: 'foobar'
-    click_on('Sign in')
+    page.fill_in 'signin_email', with: 'brightokike5@gmail.com'
+    page.fill_in 'signin_password', with: 'foobar'
+    click_on('Sign In')
 
     visit root_url
     page.fill_in 'content', with: 'money'
 
-    click_on('Post')
+    click_on('Submit')
 
     expect(page).to have_content 'content cant be empty or less than 10 letter'
   end
 
   it 'successful post creation' do
     visit '/login'
-    page.fill_in 'mail2', with: 'brightokike5@gmail.com'
-    page.fill_in 'pass2', with: 'foobar'
-    click_on('Sign in')
+    page.fill_in 'signin_email', with: 'brightokike5@gmail.com'
+    page.fill_in 'signin_password', with: 'foobar'
+    click_on('Sign In')
 
     visit root_url
     page.fill_in 'content', with: 'money is good'
 
-    click_on('Post')
+    click_on('Submit')
 
     expect(page).to have_content 'Post created'
   end
 
-  it 'upcoming event & past evetn show in Events index page' do
+  it 'visit root page' do
     visit '/login'
-    page.fill_in 'mail2', with: 'brightokike5@gmail.com'
-    page.fill_in 'pass2', with: 'foobar'
-    click_on('Sign in')
+    page.fill_in 'signin_email', with: 'brightokike5@gmail.com'
+    page.fill_in 'signin_password', with: 'foobar'
+    click_on('Sign In')
 
     visit root_url
-    expect(page).to have_content 'Content'
-    expect(page).to have_content 'Welcome'
+    expect(page).to have_content @user.name
     expect(page).to have_content 'All Users'
   end
 end

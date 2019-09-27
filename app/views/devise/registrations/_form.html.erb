@@ -1,0 +1,40 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="form-signin">
+      <h1>Sign up</h1>
+      <h3 class="mb-5">It is easy and quick!!</h3>
+      <div class="form-group">
+          <%= f.text_field :name, 
+                            placeholder: "Your Name ...",
+                            autofocus: true,
+                            class: "form-control mail" %>
+      </div>
+
+      <div class="form-group">
+          <%= f.email_field :email, 
+                            placeholder: "Your Email Here ...",
+                            class: "form-control mail"%>
+      </div>
+
+      <div class="field">
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, 
+                              placeholder: "password here ...",
+                              autocomplete: "new-password", 
+                              class: "form-control mail" %>
+      </div>
+
+      <div class="field">
+          <%= f.password_field :password_confirmation,    
+                      placeholder: "password confirmation",     autocomplete: "new-password",
+                      class: "form-control mail" %>
+      </div>
+
+      <div class="actions">
+          <%= f.submit "Sign up", class: "btn  btn-primary btn-block signup_button my-3" %>
+      </div> 
+      
+    </div>
+<% end %>

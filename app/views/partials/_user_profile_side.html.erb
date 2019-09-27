@@ -1,0 +1,11 @@
+<div class="text-center"> 
+  <%= link_to  image_tag(user.gravatar_url, 
+                style: "width: 7rem;", 
+                class: "my-2 rounded-lg shadow-sm"), 
+                users_show_path(user) %>
+  <h4 class="font-italic font-weight-light"> 
+    <%= link_to user.name, users_show_path(user) %>
+  </h4>
+
+  <p>Join <%= time_ago_in_words(user.created_at) %> ago.</p>
+</div>

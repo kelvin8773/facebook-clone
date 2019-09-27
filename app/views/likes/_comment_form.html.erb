@@ -1,0 +1,12 @@
+<div class="d-flex flex-start">
+  <% if like = comment.liked?(current_user) %>  
+      <%= link_to "unlike", likes_destroy_path(like), class:"mx-2 post-like", method: :delete %>
+  <% else %>
+      <%= form_for(@like, url: likes_create_path) do |f| %>
+      <%=  f.hidden_field :likeable_type, value: "Comment" %>
+      <%=  f.hidden_field :likeable_id, value: comment.id %>
+      <%= f.submit "like", class: "post-like" %>
+      <% end %>
+  <% end %>
+  <div class="mx-1"> <%= comment.likes.count %> </div>
+</div>

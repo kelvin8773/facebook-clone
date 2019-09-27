@@ -1,7 +1,9 @@
-<%= form_for(@post) do |x| %>
+<%= form_for(@post, url: posts_path(@post)) do |x| %>
   <div class="field">     
-		<%= x.label :content %><br />
-    <%= x.text_area :content, class: "post_box", id: "content"%>
+    <%= x.text_area :content, 
+                    Placeholder: "Say Something here ...",
+                    class: "post_box mt-4 mb-2", 
+                    id: "content"%>
   </div>
 
   <div class="field">
@@ -9,6 +11,6 @@
   </div>
 
 	<div class="actions">
-    <%= x.submit "Post", class: "btn btn-primary post_button"  %>
+    <%= x.submit "Submit", class: "btn btn-primary post_button"  %>
   </div>
 <%end %>
