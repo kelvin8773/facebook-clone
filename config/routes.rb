@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post "likes/create"
   delete "likes/destroy"
 
+
   resource :posts
   resource :comments
   resource :likes

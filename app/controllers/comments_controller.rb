@@ -1,23 +1,22 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :authenticate_user!
 
-  def new
-  end
+  def new; end
 
   def create
     @comment = current_user.comments.build(comment_params)
 
     if @comment.save
       flash[:success] = 'Comment Saved.'
-      redirect_to root_path
     else
       flash[:danger] = 'Comment can not be saved.'
-      redirect_to root_path
     end
+    redirect_to root_path
   end
 
-  def show   
-  end
+  def show; end
 
   def edit
     @comment = Comment.find_by(id: params[:format])
@@ -45,6 +44,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def comment_params
     params.require(:comment).permit(:content, :user_id, :post_id)
   end

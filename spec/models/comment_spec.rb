@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
@@ -6,13 +8,12 @@ RSpec.describe Comment, type: :model do
                          email: 'brightokike4@gmail.com',
                          password: 'foobar',
                          password_confirmation: 'foobar')
-    
+
     @post = @user.posts.create!(content: 'this is a post for testing')
     @comment = @user.comments.build(content: 'great!', post_id: @post.id)
   end
 
-  context "Comment validation" do
-
+  context 'Comment validation' do
     it 'ensures it is successfully created' do
       expect(@comment.valid?).to eql(true)
     end
@@ -27,11 +28,8 @@ RSpec.describe Comment, type: :model do
       expect(@comment.valid?).to eql(false)
       @comment.content = '6'
       expect(@comment.valid?).to eql(false)
-      @comment.content = "THis is valid."
+      @comment.content = 'THis is valid.'
       expect(@comment.valid?).to eql(true)
     end
-
   end
-
-
 end

@@ -1,17 +1,10 @@
-<% if user_signed_in? %>
 <div class="row">
    <div class="col-md-4"> 
-        <%= image_tag current_user.gravatar_url %>
-        <h1> Welcome, <%= current_user.first_name %>!</h1>
+        <%= render 'partials/user_profile_side', user: current_user %>                
     </div>
 
     <div class="col-md-5">
-        <%= render 'posts/editform' %>
-        <div class="clearfix">
-        </div>
-        <ul>
-         <%= render @posts %>
-        </ul>
+        <%= render 'posts/form' %>  
     </div>
     <div class="col-md-3">
          
@@ -19,6 +12,3 @@
 
 </div>
 
-<% else %>
-    <%= render 'partials/new_user'%>
-<% end %>

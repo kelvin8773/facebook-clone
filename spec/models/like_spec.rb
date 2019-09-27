@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
@@ -6,7 +8,7 @@ RSpec.describe Like, type: :model do
                          email: 'brightokike4@gmail.com',
                          password: 'foobar',
                          password_confirmation: 'foobar')
-    
+
     @post = @user.posts.create!(content: 'this is a post for testing')
     @comment = @user.comments.create!(content: 'great!', post_id: @post.id)
   end
@@ -26,10 +28,7 @@ RSpec.describe Like, type: :model do
       @like_comment = @user.likes.build(likeable_type: 'Comment', likeable_id: @comment.id)
 
       expect(@like_comment.save).to eql(true)
-      expect(!@post.liked?(@user).nil?).to eql(true)
-
+      expect(!@comment.liked?(@user).nil?).to eql(true)
     end
-
   end
-
 end

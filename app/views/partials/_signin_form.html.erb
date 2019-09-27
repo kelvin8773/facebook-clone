@@ -2,12 +2,19 @@
   <div class="form-row align-items-center ">
     <div class="col-auto my-1 nav-sign">
       <%= f.label :email, class: "sr-only" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email"%>
+      <%= f.email_field :email, 
+                        autofocus: true, 
+                        autocomplete: "email", 
+                        placeholder: "Email",
+                        id: "signin_email" %>
     </div>
 
     <div class="col-auto my-1 nav-sign ">
       <%= f.label :password, class: "sr-only"%>
-      <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password" %>
+      <%= f.password_field :password, 
+                            autocomplete: "current-password", 
+                            placeholder: "Password",
+                            id: "signin_password"  %>
     </div>
     <% if devise_mapping.rememberable? %>
       <div class="col-auto my-1 form-check nav-sign">
