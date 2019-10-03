@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"> 
+        <%= render 'partials/user_profile_side', user: @user %>
+    </div>
+
+    <div class="col-md-6">
+        <h3>Friend Request Received</h3>
+        <%= render @user.friend_requests %>
+
+        <hr>
+        <h3>Friend Request Sent</h3>
+        <%= render @user.pending_friends %>
+
+    </div>
+
+    <div class="col-md-3">
+        <%= render @user.friends %>
+    </div>
+
+  </div>
+</div>

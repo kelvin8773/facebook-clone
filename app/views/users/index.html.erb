@@ -1,8 +1,20 @@
 <ul>
   <% @users.each do |user| %>
-    <li class= "list-unstyled user_idex1">  <%= image_tag user.gravatar_url %>
-     <h4 class="pt-1"><%= link_to user.name.upcase%></h4> <%= user.email %> 
-    <p>Join <%= time_ago_in_words(user.created_at) %> ago.</p> 
+    <li class= "list-unstyled user_idex1">  
+      <%= image_tag user.gravatar_url, class: "rounded-circle mx-auto" %>
+      <h4 class="pt-1"><%= link_to user.name.upcase%></h4> <%= user.email %> 
+      <p>Join <%= time_ago_in_words(user.created_at) %> ago.</p> 
+
+       <% if current_user.friend?(user) %> 
+        <%= link_to "is Your Friend.", "#", class: "btn btn-info"%>
+
+      <% elsif current_user.pending_friends.include?(user) %>
+        <%= link_to "Pending...", "#", class: "btn btn-success"%>
+
+      <% else %>
+        <%= link_to "Friend?", users_show_path(user), class: "btn btn-primary"%>
+      <% end %>
+      
      </li>
   <% end %>
 </ul>

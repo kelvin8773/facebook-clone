@@ -14,7 +14,7 @@
           Hi,  <%= current_user.first_name  %> </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <%= link_to "Your Profile", users_show_path(current_user), class: "dropdown-item" %>
-            <a class="dropdown-item" href="#">Friends</a>
+            <%= link_to "Friends", friends_path, class: "dropdown-item" %>
             <div class="dropdown-divider"></div>
             <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>

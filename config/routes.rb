@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root to: 'home#index'
+
+  get "/friends", to: 'home#friends'
   
   post 'comments/create'
   get 'comments/show'
