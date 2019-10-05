@@ -7,6 +7,8 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:format])
     @comment = Comment.new
     @like = Like.new
+    @posts = Post.all 
+    @post = Post.new
   end
 
   def index

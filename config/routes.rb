@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   delete "likes/destroy"
   delete "/delete_friend", to: "friendships#destroy"
   patch "/confirm_friend", to: "friendships#confirm"
+  get 'friends', to: 'home#friends'
 
 
   resource :posts
