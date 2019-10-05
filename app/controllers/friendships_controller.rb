@@ -18,6 +18,12 @@ class FriendshipsController < ApplicationController
     current_user.confirm_friend(@user)
     redirect_to friends_path
   end
+
+  def cancel
+    @user = User.find_by(id: params[:format])
+    current_user.cancel_friend_request(@user)
+    redirect_to friends_path
+  end
   private
   def friendship_params
     params.require(:friendship).permit(:user_id, :friend_id)

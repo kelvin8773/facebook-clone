@@ -182,3 +182,19 @@ body {
 .friends img {
     height: 30px;
 }
+
+.notification img {
+    height: 20px;
+    color: #fff;
+    vertical-align: middle;
+    margin-top: 10px;
+}
+
+.notification-count {
+    position: absolute;
+    right: 117px;
+    background-color: red;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+}

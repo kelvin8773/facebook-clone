@@ -31,9 +31,14 @@ class User < ApplicationRecord
     friends_array.compact
   end
 
-  # Users who have yet to confirme friend requests
+  # Users who are yet to confirm ur friend request
   def pending_friends
     friendships.map{ |friendship| friendship.friend unless friendship.confirmed }.compact
+  end
+
+  def cancel_friend_request(user)
+    friendship = friendships.find{ |f| f.friend_id == user.id }
+    friendship.destroy
   end
 
   # Users who have requested to be friends

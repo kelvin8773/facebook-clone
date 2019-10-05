@@ -19,9 +19,16 @@
             <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
          </li>
+        
+        <li class="nav-item notification" >
+          <%= image_tag("notifications") %> 
+          <% if current_user.friend_requests.count > 0 %> 
+            <%= link_to current_user.friend_requests.count, friends_path, class: "notification-count px-1" %>
+          <% end %>
+        </li>
 
         <li class="nav-item">    
-          <%= link_to 'All Users', users_index_path, class: "nav-link" %>
+          <%= link_to 'Find Friends', users_index_path, class: "nav-link" %>
         </li>
     
       <% else %>  
