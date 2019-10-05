@@ -11,6 +11,8 @@ class UsersController < ApplicationController
 
   def index
     @users = User.where('id != ?', current_user.id)
+    @friendship = Friendship.new
+    @friend = current_user.friendships.find_by(friend_id:  params[:format])
   end
 
 end

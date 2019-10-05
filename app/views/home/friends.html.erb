@@ -5,8 +5,27 @@
     </div>
 
     <div class="col-md-6">
+
         <h3>Friend Request Received</h3>
-        <%= render @user.friend_requests %>
+        <table class="table">
+          <thead>
+            <tr> 
+              <th scope="col">User</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <% @user.friend_requests.each do |f| %>
+            <tbody>
+              <tr>
+                <td> <%= render f %></td>
+                <td> <%= link_to "Confirm Request", confirm_friend_path(f),
+                                                method: :patch,
+                                                data: { confirm: "Are You sure?" },
+                                                class: "btn btn-success mt-4"%> </td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
 
         <hr>
         <h3>Friend Request Sent</h3>
@@ -15,6 +34,7 @@
     </div>
 
     <div class="col-md-3">
+      <h3> Friends </h3>
         <%= render @user.friends %>
     </div>
 

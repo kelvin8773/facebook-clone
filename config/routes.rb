@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'frienships/create'
   root to: 'home#index'
 
   get "/friends", to: 'home#friends'
@@ -18,10 +19,13 @@ Rails.application.routes.draw do
 
   post "likes/create"
   delete "likes/destroy"
+  delete "/delete_friend", to: "friendships#destroy"
+  patch "/confirm_friend", to: "friendships#confirm"
 
 
   resource :posts
   resource :comments
   resource :likes
   resources :users, only: [:index, :show]
+  resource :friendships
 end
