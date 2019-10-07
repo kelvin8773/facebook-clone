@@ -27,4 +27,26 @@ RSpec.describe Friendship, type: :model do
     end
   end
 
+  context "friendship relate methods" do 
+    before :each do
+      @user1 = users(:bright)
+      @user2 = users(:emeka)
+      Friendship.create!(user_id: @user1.id, friend_id: @user2.id)
+    end
+    
+    it "including pending friends & friends after create friendship" do
+      expect(@user1.pending_friends.include?(@user2)).to eql(true)
+      expect(@user2.friend_requests.include?(@user1)).to eq true
+  
+      @user2.confirm_friend(@user1)
+      expect(@user2.friends.include?(@user1)).to eq true
+    end
+    
+    it "check friends? working" do
+      @user2.confirm_friend(@user1)
+      expect(@user1.friend?(@user2)).to eq true
+      expect(@user2.friend?(@user1)).to eq true
+    end
+  end
+
 end

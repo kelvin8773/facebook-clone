@@ -40,6 +40,7 @@ class User < ApplicationRecord
     friendship = friendships.find{ |f| f.friend_id == user.id }
     friendship.destroy
   end
+  
 
   # Users who have requested to be friends
   def friend_requests
