@@ -8,7 +8,11 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @friend = current_user.friendships.find_by(friend_id:  params[:format])
+    @friend1 =  Friendship.find_by(user_id: params[:format])
+    @friend2 = Friendship.find_by(friend_id: params[:format])
+    
+    @friend = @friend1 || @friend2
+
     flash[:danger] = 'Removed Friend' if @friend.destroy
     redirect_to users_path
   end
