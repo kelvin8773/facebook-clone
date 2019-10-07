@@ -1,6 +1,7 @@
 class FriendshipsController < ApplicationController
   def create
-    @friendship = current_user.friendships.build(friendship_params)
+    @friendship = Friendship.new(friendship_params)
+    
     if @friendship.save
       flash[:success] = 'Friend request sent'
       redirect_to users_path
@@ -8,12 +9,11 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @friend1 =  Friendship.find_by(user_id: params[:format])
-    @friend2 = Friendship.find_by(friend_id: params[:format])
-    
-    @friend = @friend1 || @friend2
-
-    flash[:danger] = 'Removed Friend' if @friend.destroy
+    @friend1 = Friendship.where(user_id: params[:format], friend_id: current_user.id)
+    @friend2 = Friendship.where(user_id: current_user.id, friend_id: params[:format])
+    @friend = @friend1 ? @friend1 : @friend2
+    # byebug
+    flash[:danger] = 'Removed Friend' if @friend.delete_all
     redirect_to users_path
   end
 
@@ -28,6 +28,7 @@ class FriendshipsController < ApplicationController
     current_user.cancel_friend_request(@user)
     redirect_to friends_path
   end
+
   private
   def friendship_params
     params.require(:friendship).permit(:user_id, :friend_id)

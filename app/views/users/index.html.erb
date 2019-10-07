@@ -28,6 +28,7 @@
             <%= link_to "Request already sent", "#", class: "btn btn-success"%>
           <% else %>
               <%= form_for(@friendship, url: friendships_path(@friendship)) do |f| %>
+                <%= f.hidden_field :user_id, value: current_user.id  %>
                 <%= f.hidden_field :friend_id, value: user.id  %>
                 <%= f.submit "Add As Friend", class: "btn btn-primary" %>
               <% end %>
