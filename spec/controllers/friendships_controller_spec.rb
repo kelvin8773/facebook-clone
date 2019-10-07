@@ -1,20 +1,18 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe FriendshipsController, type: :controller do
   fixtures :users
 
-  before :each do 
-    @user1 = users(:bright)
-    @user2 = users(:emeka)
-  end
-
-  describe "create#post" do
-    it "create new friendship" do
-      params = ActionController::Parameters.new(frienship: {user_id: @user1.id, friend_id: @user2.id})
-      user_params = FriendshipsController::UserParams.build(params)
-      post :create, user_params
-      expect(Friendship.where(user_id: @user1.id, friend_id: @user2.id)).not_to eq(nil)
+  describe 'GET #create' do
+    it 'returns http success' do
+      @request.env['devise.mapping'] = Devise.mappings[:user]
+      sign_in users(:bright)
+      current_user = users(:bright)
+      user1 = users(:emeka)
+      current_user.friendships.build(friend_id: user1.id)
+      expect(response).to have_http_status(200)
     end
   end
-
 end

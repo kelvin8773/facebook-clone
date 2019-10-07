@@ -1,0 +1,9 @@
+bright:
+  user_id: 4
+  friend_id: 1
+  confirmed: true
+
+kelvin:
+  user_id: 2
+  friend_id: 3
+  confirmed: false
