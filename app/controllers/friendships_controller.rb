@@ -19,12 +19,14 @@ class FriendshipsController < ApplicationController
   def confirm
     @user = User.find_by(id: params[:format])
     current_user.confirm_friend(@user)
+    flash[:success] = 'Friend Request Confirmed'
     redirect_to friends_path
   end
 
   def cancel
     @user = User.find_by(id: params[:format])
     current_user.cancel_friend_request(@user)
+    flash[:success] = 'Friend Request Canceled'
     redirect_to friends_path
   end
 

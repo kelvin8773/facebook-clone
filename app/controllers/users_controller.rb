@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @like = Like.new
     @posts = Post.all 
     @post = Post.new
+    @friendship = Friendship.new
   end
 
   def index
