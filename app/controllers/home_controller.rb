@@ -9,4 +9,8 @@ class HomeController < ApplicationController
     @comment = Comment.new
     @posts = Post.all
   end
+
+  def friends
+    @user = current_user
+  end
 end

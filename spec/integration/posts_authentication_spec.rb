@@ -22,7 +22,7 @@ RSpec.describe 'Post authentication', type: :feature do
     visit root_url
     page.fill_in 'content', with: 'money'
 
-    click_on('Submit')
+    click_on('Post')
 
     expect(page).to have_content 'content cant be empty or less than 10 letter'
   end
@@ -36,7 +36,7 @@ RSpec.describe 'Post authentication', type: :feature do
     visit root_url
     page.fill_in 'content', with: 'money is good'
 
-    click_on('Submit')
+    click_on('Post')
 
     expect(page).to have_content 'Post created'
   end
@@ -49,6 +49,6 @@ RSpec.describe 'Post authentication', type: :feature do
 
     visit root_url
     expect(page).to have_content @user.name
-    expect(page).to have_content 'All Users'
+    expect(page).to have_content 'Find Friends'
   end
 end
