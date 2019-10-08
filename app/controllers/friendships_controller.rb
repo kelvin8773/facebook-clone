@@ -10,7 +10,7 @@ class FriendshipsController < ApplicationController
   def destroy
     @friend1 = Friendship.where(user_id: params[:format], friend_id: current_user.id)
     @friend2 = Friendship.where(user_id: current_user.id, friend_id: params[:format])
-    @friend = @friend1 ? @friend1 : @friend2
+    @friend = @friend1 || @friend2
     # byebug
     flash[:danger] = 'Removed Friend' if @friend.delete_all
     redirect_to users_path
@@ -29,7 +29,8 @@ class FriendshipsController < ApplicationController
   end
 
   private
-  def friendship_params
-    params.require(:friendship).permit(:user_id, :friend_id)
-  end
+
+    def friendship_params
+      params.require(:friendship).permit(:user_id, :friend_id)
+    end
 end
