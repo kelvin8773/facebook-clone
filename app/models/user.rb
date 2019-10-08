@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_many :friendships, dependent: :destroy
-  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -26,29 +26,28 @@ class User < ApplicationRecord
   end
 
   def friends
-    friends_array = friendships.map{ |friendship| friendship.friend if friendship.confirmed }
-    friends_array += inverse_friendships.map{ |friendship| friendship.user if friendship.confirmed }
+    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
+    friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
     friends_array.compact
   end
 
   # Users who are yet to confirm ur friend request
   def pending_friends
-    friendships.map{ |friendship| friendship.friend unless friendship.confirmed }.compact
+    friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
   end
 
   def cancel_friend_request(user)
-    friendship = friendships.find{ |f| f.friend_id == user.id }
+    friendship = friendships.find { |f| f.friend_id == user.id }
     friendship.destroy
   end
-  
 
   # Users who have requested to be friends
   def friend_requests
-    inverse_friendships.map{ |friendship| friendship.user unless friendship.confirmed }.compact
+    inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
   end
 
   def confirm_friend(user)
-    friendship = inverse_friendships.find{ |f| f.user == user }
+    friendship = inverse_friendships.find { |f| f.user == user }
     friendship.confirmed = true
     friendship.save
   end

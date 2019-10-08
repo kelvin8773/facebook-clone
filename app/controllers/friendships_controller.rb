@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class FriendshipsController < ApplicationController
   def create
     @friendship = current_user.friendships.build(friendship_params)
-    if @friendship.save
-      flash[:success] = 'Friend request sent'
-      redirect_to users_path
-    end
+    return unless @friendship.save
+    
+    flash[:success] = 'Friend request sent'
+    redirect_to users_path
   end
 
   def destroy
@@ -19,18 +21,20 @@ class FriendshipsController < ApplicationController
   def confirm
     @user = User.find_by(id: params[:format])
     current_user.confirm_friend(@user)
+    flash[:success] = 'Friend Request Confirmed'
     redirect_to friends_path
   end
 
   def cancel
     @user = User.find_by(id: params[:format])
     current_user.cancel_friend_request(@user)
+    flash[:success] = 'Friend Request Canceled'
     redirect_to friends_path
   end
 
   private
 
-    def friendship_params
-      params.require(:friendship).permit(:user_id, :friend_id)
-    end
+  def friendship_params
+    params.require(:friendship).permit(:user_id, :friend_id)
+  end
 end

@@ -10,7 +10,7 @@ class HomeController < ApplicationController
     @posts = Post.all
   end
 
-  def friends 
+  def friends
     @user = current_user
   end
 end
