@@ -4,7 +4,7 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = current_user.friendships.build(friendship_params)
     return unless @friendship.save
-    
+
     flash[:success] = 'Friend request sent'
     redirect_to users_path
   end
