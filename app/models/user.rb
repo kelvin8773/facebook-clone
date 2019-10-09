@@ -8,7 +8,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_many :friendships, dependent: :destroy
-  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
+  # has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :friends, :through => :friendships, :source => :user
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -25,11 +26,11 @@ class User < ApplicationRecord
     name.split(' ').last
   end
 
-  def friends
-    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
-    friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
-    friends_array.compact
-  end
+  # def friends
+  #   friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
+  #   friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
+  #   friends_array.compact
+  # end
 
   # Users who are yet to confirm ur friend request
   def pending_friends
@@ -43,11 +44,12 @@ class User < ApplicationRecord
 
   # Users who have requested to be friends
   def friend_requests
-    inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
+    friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
   end
 
   def confirm_friend(user)
-    friendship = inverse_friendships.find { |f| f.user == user }
+    friendship = Friendship.find_by(user_id: user.id, friend_id: id)
+    # byebug
     friendship.confirmed = true
     friendship.save
   end
@@ -56,6 +58,6 @@ class User < ApplicationRecord
 
   # end
   def friend?(user)
-    friends.include?(user)
+    friendships.map {|friendship| friendship.user if friendship.confirmed }.include?(user)
   end
 end
