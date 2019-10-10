@@ -17,6 +17,8 @@
             <p> Number of Friends: <%= @user.friends.count%> </p>
             <% if current_user.friends.include?(@user) %>
                 <p> Friends </p>
+            <% elsif @user == current_user %>
+                <p> Hi, <%= current_user.name%>
             <% else %>
                 <%= form_for(@friendship, url: friendships_path(@friendship)) do |f| %>
               
@@ -33,6 +35,17 @@
                 <%= render friend%>
             <%end%>
         </div>
+         <hr>
+
+        <% if !current_user.mutual_friends(@user).nil?%>
+            <div class=" bg-white px-3 py-3 friends">
+                
+                <h3> <%= image_tag("friend-icon")%>  <%= link_to 'Mutual Friends', friends_path %> </h3>
+                <% current_user.mutual_friends(@user).each do |friend|%>
+                    <%= render friend%>
+                <%end%>
+            </div>
+        <% end %>
 
     </div>
 

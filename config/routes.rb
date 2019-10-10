@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   delete "/delete_friend", to: "friendships#destroy"
   patch "/confirm_friend", to: "friendships#confirm"
   delete "/cancel_request", to: "friendships#cancel"
+   delete "/ignore_request", to: "friendships#ignore"
   get 'friends', to: 'home#friends'
 
 
