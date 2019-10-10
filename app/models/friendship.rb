@@ -5,7 +5,8 @@ class Friendship < ApplicationRecord
   belongs_to :friend, class_name: 'User'
 
   after_create do |p|
-    Friendship.create!(user_id: p.friend_id, friend_id: p.user_id) unless Friendship.find_by(user_id: p.friend_id, friend_id: p.user_id)
+    Friendship.find_or_create_by!(user_id: p.friend_id, friend_id: p.user_id) 
+    # unless Friendship.find_by(user_id: p.friend_id, friend_id: p.user_id)
   end
 
   after_update do |p|
