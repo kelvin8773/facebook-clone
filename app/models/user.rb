@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   include Gravtastic
   gravtastic
@@ -51,17 +53,13 @@ class User < ApplicationRecord
   end
 
   def mutual_friends(user)
-    friends & user.friends  unless user.id == id  
+    friends & user.friends unless user.id == id
   end
 
   def mutual_friends?(user)
-    if mutual_friends(user) == nil 
-      false 
-    else 
-      true
-    end
+    !mutual_friends(user).nil?
   end
-  # end
+
   def friend?(user)
     friends.include?(user)
   end
