@@ -44,6 +44,12 @@ RSpec.describe Friendship, type: :model do
   end
 
   context 'more friendship relate methods' do
+    before :each do
+      @user1 = users(:bright)
+      @user2 = users(:emeka)
+      @user3 = users(:kelvin)
+      Friendship.create!(user_id: @user1.id, friend_id: @user2.id)
+    end
     it 'check friends? working' do
       @user2.confirm_friend(@user1)
       expect(@user1.friend?(@user2)).to eq true
