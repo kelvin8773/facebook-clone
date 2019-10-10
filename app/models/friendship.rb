@@ -4,6 +4,9 @@ class Friendship < ApplicationRecord
   belongs_to :user, foreign_key: :friend_id
   belongs_to :friend, class_name: 'User'
 
+
+  # scope :friendship, -> {where(self.confirmed: true)}
+
   after_create do |p|
     Friendship.find_or_create_by!(user_id: p.friend_id, friend_id: p.user_id) 
     # unless Friendship.find_by(user_id: p.friend_id, friend_id: p.user_id)

@@ -9,7 +9,10 @@ class User < ApplicationRecord
 
   has_many :friendships, dependent: :destroy
   # has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
-  has_many :friends, :through => :friendships, :source => :user
+  # has_many :friends, through: :friendships, source:  :user
+  # has_many :friends, -> { friendship }, through: :friendships, source: :user
+  has_many :friends, -> { where(friendships: {confirmed: true}) }, :through => :friendships
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -44,12 +47,12 @@ class User < ApplicationRecord
 
   # Users who have requested to be friends
   def friend_requests
-    friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
+    friendships.map { |friendship| friendship.user unless friendship.confirmed && 
+      friendship.friend_id != id }.compact
   end
 
   def confirm_friend(user)
     friendship = Friendship.find_by(user_id: user.id, friend_id: id)
-    # byebug
     friendship.confirmed = true
     friendship.save
   end
