@@ -18,17 +18,16 @@
           
           <td class="align-middle"> <%= user.email %> </td>
 
-          <td class="align-middle"> <% if current_user.friend?(user) %>
+          <td class="align-middle"> 
+          <% if current_user.pending_friends.include?(user) %>
+            <%= link_to "Request already sent", "#", class: "btn btn-success"%>
+          <% elsif  current_user.friend?(user) %>
               <%= link_to "Remove Friend", delete_friend_path(user), 
                                             method: :delete,
                                             data: { confirm: "Are You sure?" },
                                             class: "btn btn-danger" %> 
-              
-          <% elsif current_user.pending_friends.include?(user) %>
-            <%= link_to "Request already sent", "#", class: "btn btn-success"%>
           <% else %>
-              <%= form_for(@friendship, url: friendships_path(@friendship)) do |f| %>
-              
+              <%= form_for(@friendship, url: create_friend_path(@friendship)) do |f| %>
                 <%= f.hidden_field :friend_id, value: user.id  %>
                 <%= f.submit "Add As Friend", class: "btn btn-primary" %>
               <% end %>

@@ -32,6 +32,14 @@ class FriendshipsController < ApplicationController
     redirect_to friends_path
   end
 
+  def ignore
+    @user = User.find_by(id: params[:format])
+    @friendship = Friendship.find { |f| f.user_id == @user.id }
+    @friendship.destroy
+    flash[:danger] = 'Friend Request Ignored'
+    redirect_to friends_path
+  end
+
   private
 
   def friendship_params

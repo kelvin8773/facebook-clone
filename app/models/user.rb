@@ -52,9 +52,14 @@ class User < ApplicationRecord
     friendship.save
   end
 
-  # def user_object
+  def mutual_friends(user)
+    friends & user.friends unless user.id == id
+  end
 
-  # end
+  def mutual_friends?(user)
+    !mutual_friends(user).nil?
+  end
+
   def friend?(user)
     friends.include?(user)
   end
