@@ -22,7 +22,7 @@
           <% if current_user.pending_friends.include?(user) %>
             <%= link_to "Request already sent", "#", class: "btn btn-success"%>
           <% elsif  current_user.friend?(user) %>
-              <%= link_to "Remove Friend", delete_friend_path(user), 
+              <%= link_to "Remove Friend", delete_friend_path(user_id: user.id), 
                                             method: :delete,
                                             data: { confirm: "Are You sure?" },
                                             class: "btn btn-danger" %> 

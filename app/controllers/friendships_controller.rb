@@ -10,11 +10,12 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @friend1 = Friendship.where(user_id: params[:format], friend_id: current_user.id)
-    @friend2 = Friendship.where(user_id: current_user.id, friend_id: params[:format])
-    @friend = @friend1 || @friend2
-    # byebug
-    flash[:danger] = 'Removed Friend' if @friend.delete_all
+    # @friend1 = Friendship.where(user_id: params[:format], friend_id: current_user.id)
+    # @friend2 = Friendship.where(user_id: current_user.id, friend_id: params[:format])
+    # @friend = @friend1 || @friend2
+    @user = User.find_by(user_id: params[:format])
+    current_user.friends.delete(@user)
+    flash[:danger] = 'Removed Friend' 
     redirect_to users_path
   end
 
