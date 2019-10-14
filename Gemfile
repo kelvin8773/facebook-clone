@@ -66,13 +66,13 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'dotenv-rails'
+
 gem 'devise', '~> 4.7', '>= 4.7.1'
 
 gem 'gravtastic'
 
 gem 'omniauth-facebook', '~> 5.0'
-gem 'dotenv-rails'
-
 
 gem 'rubocop'
 

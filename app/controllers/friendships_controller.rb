@@ -15,7 +15,7 @@ class FriendshipsController < ApplicationController
     # @friend = @friend1 || @friend2
     @user = User.find_by(user_id: params[:format])
     current_user.friends.delete(@user)
-    flash[:danger] = 'Removed Friend' 
+    flash[:danger] = 'Removed Friend'
     redirect_to users_path
   end
 
