@@ -19,4 +19,4 @@ This is the final project from [Odin Project](https://www.theodinproject.com/cou
 
 ## Heroku live URL
 
-- [Click Here][https://facebook-clone3.herokuapp.com/]
+- [Click Here](https://facebook-clone3.herokuapp.com/)
