@@ -21,9 +21,8 @@
          </li>
         
         <li class="nav-item notification" >
-          <%# <%= image_tag("notifications") %>  
-          <%= fa_icon('bell', type: :solid, class: 'fa-2x', style: 'color: Tomato;') %>
-          <i class="fas fa-bell fa-2x"></i>
+          <%= image_tag("notifications")  %>  
+          <%# <%= fa_icon('bell', type: :solid, style: 'color: Tomato; width: 20px;') %>
           <% if current_user.friend_requests.count > 0 %> 
             <%= link_to current_user.friend_requests.count, friends_path, class: "notification-count px-1" %>
           <% end %>
