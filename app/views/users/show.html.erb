@@ -30,12 +30,15 @@
         <hr>
 
         <div class=" bg-white px-3 py-3 friends">
-            <h3> <%= image_tag("friend-icon")%>  <%= link_to 'Friends', friends_path %> </h3>
+            <h3> 
+                <i class="fas fa-user-friends fa-lg" style="color:Dodgerblue;"></i> 
+                <%= link_to 'Friends', friends_path %> 
+            </h3>
             <% @user.friends.each do |friend|%>
                 <%= render friend%>
             <%end%>
         </div>
-         <hr>
+        <hr>
 
         <% if !current_user.mutual_friends(@user).nil?%>
             <div class=" bg-white px-3 py-3 friends">
