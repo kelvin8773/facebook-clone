@@ -22,6 +22,7 @@
         
         <li class="nav-item notification" > 
           <i class="fas fa-bell fa-lg mt-2" style="color: white;"></i>
+
           <% if current_user.friend_requests.count > 0 %> 
             <%= link_to current_user.friend_requests.count, friends_path, class: "notification-count px-1" %>
           <% end %>

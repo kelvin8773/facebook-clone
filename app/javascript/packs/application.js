@@ -9,9 +9,10 @@ require("@rails/activestorage").start();
 require("channels");
 require("packs/script.js");
 
-import "../stylesheets/application";
 import "bootstrap";
 import "@fortawesome/fontawesome-free/js/all";
+import "../stylesheets/application";
+
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
