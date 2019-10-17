@@ -66,6 +66,8 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'faker'
+
 gem 'dotenv-rails'
 
 gem 'devise', '~> 4.7', '>= 4.7.1'
